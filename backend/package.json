@@ -1,0 +1,34 @@
+{
+  "name": "stacklyzer-backend",
+  "version": "1.0.0",
+  "description": "A backend API to detect technologies used on websites",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "website",
+    "technology",
+    "detector",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "express-jwt": "^8.5.1",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mailjet": "^0.0.1",
+    "node-mailjet": "^6.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://stacklyzer.mzdev.tech/sitemap.xml
