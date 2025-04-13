@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔍 Stacklyzer Frontend
 
-## Getting Started
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-App_Router-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.x-blue)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC)](https://tailwindcss.com/)
 
-First, run the development server:
+> The sleek and intuitive web interface for Stacklyzer, the open-source website technology detector.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Overview
+
+Stacklyzer Frontend is a modern web application built with Next.js that provides a user-friendly interface for detecting technologies used on websites. It connects to the Stacklyzer Backend API and presents detailed, categorized results with an emphasis on user experience and accessibility.
+
+## ✨ Features
+
+- **Clean, Modern UI**: Responsive interface that works on all devices
+- **Simple URL Input**: Easy-to-use search interface for entering website URLs
+- **Organized Results Display**: Technologies categorized by type with confidence levels
+- **Dark/Light Theme**: Support for both dark and light mode preferences
+- **Accessibility Focus**: Built with web accessibility best practices
+- **Fast Performance**: Optimized for speed with Next.js App Router architecture
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.x or higher
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/zahidlatifdev/stacklyzer.git
+   cd stacklyzer/frontend
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+## 🧩 Project Structure
+
+```
+frontend/
+├── public/             # Static assets
+├── src/
+│   ├── app/            # Next.js App Router pages and components
+│   │   ├── components/ # Reusable UI components
+│   │   ├── context/    # React context providers (theme, etc.)
+│   │   ├── utils/      # Utility functions
+│   │   ├── page.js     # Home page component
+│   │   └── layout.js   # Root layout component
+│   ├── contact/        # Contact page
+│   └── privacy-policy/ # Privacy policy page
+├── next.config.mjs     # Next.js configuration
+└── tailwind.config.js  # Tailwind CSS configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔄 API Integration
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The frontend connects to the Stacklyzer Backend API for technology detection. When a user submits a URL:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. The frontend sends a request to the backend API
+2. The backend analyzes the website and returns detected technologies
+3. The frontend displays the results in an organized, user-friendly format
 
-## Learn More
+## 🎨 UI Components
 
-To learn more about Next.js, take a look at the following resources:
+- **SearchBar**: Main component for URL input and submission
+- **TechResults**: Displays detected technologies with categorization
+- **ThemeToggle**: Allows switching between light and dark mode
+- **Header/Footer**: Navigation and site information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚢 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The frontend is designed to be deployed on Vercel for optimal performance with Next.js:
 
-## Deploy on Vercel
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Deploy to Vercel
+vercel
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For production deployment:
+
+```bash
+vercel --prod
+```
+
+## 🤝 Contributing
+
+Contributions to improve the frontend are welcome! Areas for contribution include:
+
+- UI/UX enhancements
+- Accessibility improvements
+- Performance optimizations
+- Additional features or pages
+- Bug fixes and code quality improvements
+
+Please see the main [Stacklyzer README](../README.md) for contribution guidelines.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+
+---
+
+Made with ❤️ by [Zahid Latif](https://github.com/zahidlatifdev)

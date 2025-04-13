@@ -16,7 +16,7 @@ export const Footer = () => {
                                 transition={{ duration: 0.5 }}
                                 className="text-[var(--primary)]"
                             >
-                                <FiCode className="h-7 w-7" />
+                                <FiCode color='#3b82f6' className="h-7 w-7" />
                             </motion.div>
                             <span className="font-bold text-xl sm:inline-block">Stacklyzer</span>
                         </Link>

@@ -2,7 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![API Status](https://img.shields.io/badge/API-Active-success.svg)]()
-[![Node.js Version](https://img.shields.io/badge/node-16.x-green.svg)]()
+[![Node.js Version](https://img.shields.io/badge/node-18.x-green.svg)]()
+[![Express](https://img.shields.io/badge/Express-4.x-lightgrey.svg)]()
 
 > 🔍 A powerful API for detecting technologies used on websites. The backend engine for the Stacklyzer ecosystem.
 
@@ -36,9 +37,14 @@ Stacklyzer Backend is a Node.js API that analyzes websites and detects the techn
   - Website URL for the technology
   - Additional features and development tools (when available)
 
-- **Rate Limiting**: Protects the API from abuse with built-in rate limiting
+- **Security Features**:
 
-- **CORS Support**: Enables cross-origin requests for web clients
+  - Rate limiting to protect the API from abuse
+  - Authentication middleware for secure access
+  - Platform-specific token generation
+
+- **CORS Support**: Enables cross-origin requests with configurable origins
+- **Error Handling**: Comprehensive error handling with user-friendly messages
 
 ## 📋 Table of Contents
 
@@ -47,6 +53,8 @@ Stacklyzer Backend is a Node.js API that analyzes websites and detects the techn
 - [API Endpoints](#-api-endpoints)
 - [Response Format](#-response-format)
 - [Technology Detection Categories](#-technology-detection-categories)
+- [Environment Variables](#-environment-variables)
+- [Project Structure](#-project-structure)
 - [Stacklyzer Ecosystem](#-stacklyzer-ecosystem)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -56,8 +64,8 @@ Stacklyzer Backend is a Node.js API that analyzes websites and detects the techn
 Clone this repository:
 
 ```bash
-git clone https://github.com/zahidlatifdev/stacklyzer-backend.git
-cd stacklyzer-backend
+git clone https://github.com/zahidlatifdev/stacklyzer.git
+cd stacklyzer/backend
 ```
 
 Install dependencies:
@@ -83,13 +91,13 @@ npm run dev
 Once the server is running, you can make requests to detect technologies on websites:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"url":"https://example.com"}' http://localhost:3000/api/detect
+curl -X POST -H "Content-Type: application/json" -d '{"url":"https://example.com"}' http://localhost:4000/api/detect
 ```
 
 Example using JavaScript:
 
 ```javascript
-fetch("http://localhost:3000/api/detect", {
+fetch("http://localhost:4000/api/detect", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -123,6 +131,21 @@ Returns basic API information and usage instructions.
 }
 ```
 
+### GET /api/token
+
+Generates an authentication token for accessing the API.
+
+**Response Example:**
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiresIn": 300,
+  "issuedAt": "2025-04-13T12:00:00.000Z",
+  "oneTimeUse": true
+}
+```
+
 ### POST /api/detect
 
 Analyzes a website and returns detected technologies.
@@ -132,6 +155,20 @@ Analyzes a website and returns detected technologies.
 ```json
 {
   "url": "https://example.com"
+}
+```
+
+### POST /api/contact
+
+Sends a contact form message to the administrators.
+
+**Request Body:**
+
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "message": "I'd like to know more about..."
 }
 ```
 
@@ -181,7 +218,7 @@ The API returns a JSON response with detected technologies, organized by categor
     "misc": [...]
   },
   "meta": {
-    "scanTime": "2025-04-12T15:30:45.123Z",
+    "scanTime": "2025-04-13T15:30:45.123Z",
     "engineVersion": "1.0.0"
   }
 }
@@ -200,15 +237,54 @@ Stacklyzer detects technologies across multiple categories:
 7. **Build Tools**: Webpack, Vite, Parcel, Babel, etc.
 8. **Miscellaneous**: PWA features, TypeScript, GraphQL, Web3, WebAssembly, etc.
 
+## 🌐 Environment Variables
+
+Create a `.env` file in the root of the backend directory with the following variables:
+
+```
+PORT=4000
+FRONTEND_URL=http://localhost:3000
+JWT_SECRET=your_jwt_secret_here
+EMAIL_SERVICE=smtp
+EMAIL_USER=your_email@example.com
+EMAIL_PASSWORD=your_email_password
+EMAIL_FROM=noreply@stacklyzer.com
+ANDROID_APP_SECRET=your_android_app_secret
+```
+
+## 📁 Project Structure
+
+```
+backend/
+├── src/
+│   ├── index.js               # Main server file
+│   ├── detector.js            # Core technology detection logic
+│   ├── techDefinitions.js     # Technology definitions and patterns
+│   ├── detectors/             # Specialized detection modules
+│   │   ├── analyticsDetector.js
+│   │   ├── cmsDetector.js
+│   │   ├── frameworkDetector.js
+│   │   ├── libraryDetector.js
+│   │   └── serverDetector.js
+│   ├── middleware/            # Express middleware
+│   │   └── authMiddleware.js
+│   └── services/              # Additional services
+│       └── emailService.js
+├── package.json
+├── Procfile                   # Heroku deployment configuration
+└── README.md
+```
+
 ## 🌐 Stacklyzer Ecosystem
 
 This backend API is part of the broader Stacklyzer ecosystem:
 
-- **[Stacklyzer Backend](https://github.com/zahidlatifdev/stacklyzer-backend)**: Node.js api for detecting used technologies
-- **[Stacklyzer Frontend](https://github.com/zahidlatifdev/stacklyzer-frontend)**: Web interface for analyzing websites
-- **[Stacklyzer Chrome Extension](https://github.com/zahidlatifdev/stacklyzer-chrome-extension)**: Browser extension for instant technology detection
-- **[Stacklyzer Android App](https://github.com/zahidlatifdev/stacklyzer-android-app)**: Mobile app for on-the-go website analysis
-- **[Stacklyzer NPM Package](https://github.com/zahidlatifdev/stacklyzer)**: NPM package for integrating technology detection in JavaScript projects
+- **[Backend](/backend)**: Node.js API for detecting website technologies
+- **[Frontend](/frontend)**: Next.js web application interface
+- **Upcoming Components**:
+  - Chrome Extension: For instant technology detection while browsing
+  - Android App: Mobile interface for on-the-go website analysis
+  - NPM Package: For integrating technology detection in JavaScript projects
 
 ## 🤝 Contributing
 
