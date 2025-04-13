@@ -1,0 +1,14 @@
+{
+    "name": "stacklyzer",
+    "version": "1.0.0",
+    "description": "Stacklyzer project root",
+    "scripts": {
+        "heroku-postbuild": "cd backend && npm install"
+    },
+    "cacheDirectories": [
+        "backend/node_modules"
+    ],
+    "engines": {
+        "node": "16.x"
+    }
+}
