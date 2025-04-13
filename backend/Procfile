@@ -1,0 +1,3 @@
+web: node src/index.js
+heroku buildpacks:set https://github.com/lstoll/heroku-buildpack-monorepo -a stacklyzer-backend
+heroku config:set PROJECT_PATH=backend -a stacklyzer-backend
